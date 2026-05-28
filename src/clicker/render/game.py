@@ -1,21 +1,25 @@
-from .text import center_string
-from ..game_state import GameState
+from .text import center_string, center_string_offset
+from ..game.game_state import GameState
+from ..game.game_time import time_elapsed
 from ..buildings.definitions import BUILDINGS
 from ..buildings.economy import get_building_cost, get_building_income
 
 
 def draw_game(stdscr, current_game: GameState) -> None:
-    center_string(stdscr, str(current_game.score))
-    stdscr.addstr(0, 0, f"buildings: {len(current_game.buildings)}")
+    elapsed = time_elapsed(current_game)
+    stdscr.addstr(0, 0, f"time: {str(elapsed)}")
+    stdscr.addstr(1, 0, f"buildings: {len(current_game.buildings)}")
 
-    row = 2
+    offset = 2
     for building_key, building_state in current_game.buildings.items():
         definition = BUILDINGS[building_key]
         building_name = definition.name
         count = building_state.count
         income = get_building_income(current_game, building_key)
         cost = get_building_cost(current_game, building_key)
-        line = f"{building_name}: count={count}, income={income}, cost={cost}"
+        line = f"{building_name}: count={count}, income={income}, cost={cost:.3g}"
 
-        stdscr.addstr(row, 0, line)
-        row += 1
+        center_string_offset(stdscr, line, offset, 0)
+        offset += 1
+
+    center_string(stdscr, f"{current_game.score:.3g}")

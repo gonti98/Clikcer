@@ -8,3 +8,6 @@ class BuildingState:
 class GameState:
     score: int = 0
     buildings: dict[str, BuildingState] = field(default_factory=dict)
+
+    started_at: float = 0.0
+    last_manual_score: float = 0.0
