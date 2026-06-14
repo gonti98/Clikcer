@@ -1,6 +1,6 @@
 import curses
 
-from ..key_bindings import MenuKey
+from ..app.key_bindings import MenuKey
 from .text import center_string_offset
 
 

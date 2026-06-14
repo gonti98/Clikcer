@@ -1,4 +1,4 @@
-from ..game_state import GameState
+from ..state import GameState
 from .definitions import BUILDINGS
 
 

@@ -1,8 +1,8 @@
-from ..app_state import Screen
-from ..key_bindings import CommonKey, MenuKey, GameKey
-from .new_game import new_game
-from .manual_click import try_manual_click
-from .buildings.economy import buy_building
+from .state import Screen
+from .key_bindings import CommonKey, MenuKey, GameKey
+from ..game.new_game import new_game
+from ..game.manual.economy import try_manual_click
+from ..game.buildings.economy import buy_building
 
 
 def handle_input(key, app_state) -> None:
@@ -33,5 +33,7 @@ def handle_game_input(key, app_state):
             app_state.current_screen = Screen.MENU
         case GameKey.MANUAL_CLICK:
             try_manual_click(app_state.current_game)
+        case GameKey.BUY_FARM:
+            buy_building(app_state.current_game, "farm")
         case _:
             pass

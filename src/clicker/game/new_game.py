@@ -1,6 +1,6 @@
 import time
 
-from .game_state import GameState, BuildingState, ManualClickState
+from .state import GameState, BuildingState, ManualClickState
 from .buildings.definitions import BUILDINGS
 
 
@@ -8,7 +8,7 @@ def new_game() -> GameState:
     now = time.monotonic()
 
     return GameState(
-        score=0,
+        score=100,
         buildings={key: BuildingState() for key in BUILDINGS},
         started_at=now,
         manual_click=ManualClickState(ready_at=now),

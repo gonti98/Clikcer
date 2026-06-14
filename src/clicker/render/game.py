@@ -1,5 +1,5 @@
 from .text import center_string, center_string_offset
-from ..game.game_state import GameState
+from ..game.state import GameState
 from ..game.game_time import time_elapsed
 from ..game.buildings.definitions import BUILDINGS
 from ..game.buildings.economy import get_building_cost, get_building_income

@@ -1,6 +1,6 @@
 import time
 
-from .game_state import GameState
+from .state import GameState
 
 
 def time_elapsed(current_game: GameState) -> float:

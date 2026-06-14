@@ -6,7 +6,7 @@ class BuildingState:
 
 @dataclass
 class ManualClickState:
-    value: int = 1
+    base_income: int = 1
     cooldown: float = 1.0
     ready_at: float = 0.0
 

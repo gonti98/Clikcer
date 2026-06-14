@@ -2,8 +2,8 @@ import curses
 
 from .render.menu import draw_menu
 from .render.game import draw_game
-from .app_state import AppState, Screen
-from .game.handle_input import handle_input
+from .app.state import AppState, Screen
+from .app.handle_input import handle_input
 
 
 def app(stdscr) -> None:
