@@ -11,7 +11,7 @@ class ManualClickState:
 
 @dataclass
 class GameState:
-    score: int = 0
+    score: float = 0.0
     started_at: float = 0.0
     buildings: dict[str, BuildingState] = field(default_factory=dict)
     manual_click: ManualClickState = field(default_factory=ManualClickState)

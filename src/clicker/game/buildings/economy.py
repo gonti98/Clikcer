@@ -2,7 +2,7 @@ from ..state import GameState
 from .definitions import BUILDINGS
 
 
-def get_building_cost(state: GameState, building_key: str) -> int:
+def get_building_cost(state: GameState, building_key: str) -> float:
     definition = BUILDINGS[building_key]
     building_state = state.buildings[building_key]
 
@@ -12,12 +12,12 @@ def get_building_cost(state: GameState, building_key: str) -> int:
 
     building_cost = base_building_cost * (growth_rate ** count)
 
-    return int(building_cost)
+    return building_cost
 
-def get_building_income(state: GameState, building_key: str) -> int:
+def get_building_income(state: GameState, building_key: str) -> float:
     definition = BUILDINGS[building_key]
     count = state.buildings[building_key].count
-    return int(definition.base_income * count)
+    return definition.base_income * count
 
 def try_buy_building(state: GameState, building_key: str) -> bool:
     cost = get_building_cost(state, building_key)
