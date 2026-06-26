@@ -1,5 +1,6 @@
 from .state import Screen
 from .key_bindings import MenuKey, GameKey
+from .save_manager import save
 from ..game.new_game import new_game
 from ..game.manual.economy import try_manual_click, try_buy_income_upgrade
 from ..game.buildings.economy import try_buy_building
@@ -35,6 +36,7 @@ def handle_game_input(key, app_state):
     match key:
         case GameKey.ESC:
             app_state.current_screen = Screen.MENU
+            save(app_state.current_game)
         case GameKey.MANUAL_CLICK:
             try_manual_click(app_state.current_game)
         case GameKey.BUY_BUILDING_1:
