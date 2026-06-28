@@ -1,6 +1,10 @@
 import json
+from pathlib import Path
 
 from ..game.state import GameState
+
+SAVE_DIR = Path("./saves/")
+SAVE_FILE = SAVE_DIR / "save.json"
 
 
 def save(current_game: GameState) -> None:
@@ -20,10 +24,12 @@ def save(current_game: GameState) -> None:
         "stats": {
             "started_at": current_game.started_at,
             "total_time_played": current_game.total_time_played,
-            "total_score": 0,
+            "total_score": current_game.total_score,
         },
         "prestige": {},
     }
 
-    with open("save.json", "w") as file:
-        json.dump(data, file, indent=2)
+    SAVE_DIR.mkdir(parents=True, exist_ok=True)
+
+    with SAVE_FILE.open("w", encoding="utf-8") as file:
+        json.dump(data, file, indent=2, ensure_ascii=False)
